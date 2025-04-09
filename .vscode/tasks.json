@@ -1,0 +1,23 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Tailwind: Watch",
+      "type": "shell",
+      "command": "npx @tailwindcss/cli -i src/css/main.css -o css/compiled.css --watch",
+      "runOptions": {
+        "runOn": "folderOpen"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Typescript: Watch",
+      "type": "shell",
+      "command": "npx tsc -w",
+      "runOptions": {
+        "runOn": "folderOpen"
+      },
+      "problemMatcher": []
+    }
+  ]
+}

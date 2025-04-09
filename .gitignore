@@ -1,3 +1,13 @@
+# START: Custom Ignore
+
+# Compiled TypeScript Code
+/js
+
+# Compiled Tailwind CSS
+/css
+
+# END: Custom Ignore
+
 # Logs
 logs
 *.log
