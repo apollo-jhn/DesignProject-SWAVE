@@ -2,9 +2,12 @@
 
 # Compiled TypeScript Code
 /js
-
 # Compiled Tailwind CSS
 /css
+# Typescript Compiled Electron JavaScript
+/main.js
+/preload.js
+
 
 # END: Custom Ignore
 

@@ -18,6 +18,15 @@
         "runOn": "folderOpen"
       },
       "problemMatcher": []
+    },
+    {
+      "label": "Electron Start",
+      "type": "shell",
+      "command": "npm start",
+      "runOptions": {
+        "runOn": "default"
+      },
+      "problemMatcher": []
     }
   ]
 }
