@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // CONSTANTS
-const TEMPLATE_BASE_PATH = "templates/"
+const TEMPLATE_BASE_PATH = "templates/";
 const app = document.getElementById("app") as HTMLDivElement | null;
 const header_title = document.getElementById(
   "header_title"
@@ -23,8 +23,23 @@ async function navigateTo(route: string): Promise<void> {
   }
 
   try {
-    const response = await fetch(`${TEMPLATE_BASE_PATH}${route}.html`);
+    // Show loading screen first
+    const loadingResponse = await fetch(
+      `${TEMPLATE_BASE_PATH}content_loading.html`
+    );
+    if (loadingResponse.ok) {
+      const loadingHtml = await loadingResponse.text();
+      app.innerHTML = loadingHtml;
+    } else {
+      console.warn("Failed to load loading template.");
+    }
 
+    // Wait for a random delay between 200ms and 900ms
+    const delay = Math.floor(Math.random() * 700) + 200;
+    await new Promise((resolve) => setTimeout(resolve, delay));
+
+    // Fetch and load the actual route
+    const response = await fetch(`${TEMPLATE_BASE_PATH}${route}.html`);
     if (!response.ok) {
       throw new Error(`Failed to load template for route: ${route}`);
     }
@@ -36,3 +51,19 @@ async function navigateTo(route: string): Promise<void> {
     console.error("Error loading route template:", error);
   }
 }
+
+// Back button click handler
+const backButton = document.getElementById("back_button");
+if (backButton) {
+  backButton.addEventListener("click", () => {
+    history.back();
+  });
+}
+
+// Listen to browser navigation (back/forward)
+window.addEventListener("popstate", (event) => {
+  const route = event.state?.route;
+  if (route) {
+    navigateTo(route);
+  }
+});
