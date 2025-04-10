@@ -1,14 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/compiled.css">
-  <title>SWAVE</title>
-</head>
-<body>
-  
-  <!-- Script that contains all the enlightenment -->
-  <script src="js/index.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/compiled.css" />
+    <title>SWAVE</title>
+  </head>
+  <body>
+    <nav class="flex flex-row justify-between p-2 shadow-sm z-10">
+      <!-- Branding -->
+      <div class="">
+        <img
+          src="assets/swave-logo.png"
+          class="w-[100px] h-auto"
+          alt="swave-logo"
+        />
+      </div>
+      <!-- Page Title -->
+      <div class="flex flex-col justify-center">
+        <h6 class="font-bold text-xl uppercase" id="header_title"></h6>
+      </div>
+      <!-- Status, Home and Back Buttons -->
+      <div class="grid grid-cols-3 grid-rows-1 items-center">
+        <!-- Websocket Status Icon -->
+        <!-- 
+          &#128308; = Disconnected
+          &#128309; = Connected
+         -->
+        <span class="animate-pulse" id="websocket_status">&#128308;</span>
+        <!-- Home Button -->
+        <img src="assets/svg/home.svg" class="invert" alt="home_button" />
+        <!-- Back Button -->
+        <img src="assets/svg/arrow-left.svg" class="invert" alt="back_button" />
+      </div>
+    </nav>
+    <!-- Dynamically loaded content container -->
+    <div id="app" class=""></div>
+    <!-- Script that contains all the enlightenment -->
+    <script src="js/index.js"></script>
+  </body>
 </html>
